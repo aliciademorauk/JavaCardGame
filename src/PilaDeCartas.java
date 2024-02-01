@@ -4,9 +4,9 @@ public class PilaDeCartas {
     private Carta[] pila;
     private int cartasAlmacenadas;
 
-    public PilaDeCartas (int cartasAlmacenadas) {
-        this.cartasAlmacenadas = cartasAlmacenadas;
-        this.pila = new Carta[cartasAlmacenadas];
+    public PilaDeCartas (int maxCartas) {
+        this.cartasAlmacenadas = 0;
+        this.pila = new Carta[maxCartas];
     }
     public boolean hayCartasDisponibles () {
         return cartasAlmacenadas > 0;
@@ -14,12 +14,8 @@ public class PilaDeCartas {
 
     // LIFO: agregamos carta en el ultimo elemento de la pila (i.e. en el primer elemento que sea null) y extraemos carta siempre por la parte superior (i.e. cogemos la carta en el ultimo indice)
     public void agregarCarta (Carta otraCarta) {
-        for (int i = 0; i < pila.length; i ++) {
-            if (pila[i] == null) {
-                pila[i] = otraCarta;
-                return;
-            }
-        }
+        pila[cartasAlmacenadas] = otraCarta;
+        cartasAlmacenadas++;
     }
 
     public Carta extraerCartaParteSuperior () {

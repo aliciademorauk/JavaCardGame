@@ -2,7 +2,7 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
-// Preguntas: clase barajar?; si quisiera mantener el codigo que esta commented out en el main, como podria configurarlo para que el usuario pudiera re-escribir el parametro en la terminal sin re-ejecutar
+// Preguntas: si quisiera mantener el codigo que esta commented out en el main, como podria configurarlo para que el usuario pudiera re-escribir el parametro en la terminal sin re-ejecutar
 public class Main {
     public static void main(String[] args) {
 
