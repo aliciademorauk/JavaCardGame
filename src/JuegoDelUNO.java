@@ -1,13 +1,13 @@
 public class JuegoDelUNO {
 	/*
-	 * Instanciar la "pila de cartas para coger" y a�adir tantas barajas completas a
-	 * la pila de cartas como se haya solicitado en los par�metros del main. La pila
+	 * Instanciar la "pila de cartas para coger" y añadir tantas barajas completas a
+	 * la pila de cartas como se haya solicitado en los parámetros del main. La pila
 	 * se debe barajar. Instanciar la "pila de cartas tiradas". La carta inicial de
-	 * esta pila se deber� extraer de la "pila de cartas para coger". Instanciar
-	 * tantos jugadores como se haya solicitado en los par�metros del main. Todo
-	 * jugador debe ser capaz de tener en su mano la totalidad de las cartas
-	 * disponibles. Cada jugador coger� de la "pila de cartas para coger" el n�mero
-	 * inicial de cartas en mano, que es el tercero de los par�metros del main. El
+	 * esta pila se deberá extraer de la "pila de cartas para coger". Instanciar
+	 * tantos jugadores como se haya solicitado en los parámetros del main.
+	 * Cada jugador debe ser capaz de tener en su mano la totalidad de las cartas
+	 * disponibles. Cada jugador cogerá de la "pila de cartas para coger" el número
+	 * inicial de cartas en mano, que es el tercero de los parámetros del main. El
 	 * juego otorga en orden, turno a cada jugador tantas veces como sea necesario,
 	 * hasta que un jugador gane o hasta que no queden cartas en la
 	 * "pila de cartas para coger". Cuando le toca el turno a un jugador, este juega
@@ -53,14 +53,14 @@ public class JuegoDelUNO {
 		// Array de tantos jugadores como haya indicado el usuario
 		JugadorDeUno[] jugadores = new JugadorDeUno[numJugadores];
 		for(int i = 0; i < numJugadores; i++) {
-			// OJO: Previamente no se ha instanciado ning�n jugador
-			// Se instancian aqu�
+			// OJO: Previamente no se ha instanciado ningún jugador
+			// Se instancian aquí
 			jugadores[i] = new JugadorDeUno("Jugador " + (i+1), numeroDeCartasInicialEnPilaParaCoger);
 			jugadores[i].cogeCartas(cartasParaCoger, numInicialDeCartasEnMano); 
 			// El jugador coge las cartas iniciales del mazo de carta (cartasParaCoger)
 		}
 		
-		// Secuenciaci�n del juego
+		// Secuenciación del juego
 		System.out.println("Juego del UNO");
 		System.out.println("Número de jugadores: " + jugadores.length);
 		System.out.println("Pila de cartas para coger con " + numeroDeCartasInicialEnPilaParaCoger + " cartas.");
@@ -75,8 +75,8 @@ public class JuegoDelUNO {
 			indiceDeTurno = (indiceDeTurno + 1) % numJugadores; //actualizaci�n �ndice array jugadores!
 		} while(!jugador.sinCartasEnLaMano() && cartasParaCoger.hayCartasDisponibles());
 
-		// Recuerda utilizar los m�todos de cada clase y no repetir c�digo
-		// El juego contin�a mientras el jugador y el mazo sigan teniendo cartas
+		// Recuerda utilizar los métodos de cada clase y no repetir código
+		// El juego continúa mientras el jugador y el mazo sigan teniendo cartas
 		// Si el jugador en turno se queda sin cartas o no quedan cartas en el mazo, se termina
 
 		if(jugador.sinCartasEnLaMano())
