@@ -24,10 +24,12 @@ public class ManoDeUno {
 
     public Carta extraerCartaApilableSobre (Carta cartaSobreLaQueHayQueApilar) {
         for (int i = 0; i < cartasEnMano.length; i++) {
-            if (cartasEnMano[i].equals(cartaSobreLaQueHayQueApilar)) {
-                Carta carta = cartasEnMano[i];
-                cartasEnMano[i] = null;
-                return carta;
+            if (cartasEnMano[i] != null) {
+                if (cartasEnMano[i].sePuedeApilarSobreCarta(cartaSobreLaQueHayQueApilar)) {
+                    Carta carta = cartasEnMano[i];
+                    cartasEnMano[i] = null;
+                    return carta;
+                }
             }
         }
         return null;
@@ -43,6 +45,7 @@ public class ManoDeUno {
         if (mano.isEmpty()) {
             return "Sin cartas.";
         }
+        mano.delete(mano.length() - 2, mano.length());
         return mano.toString();
     }
 }

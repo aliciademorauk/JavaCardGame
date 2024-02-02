@@ -51,32 +51,34 @@ public class JuegoDelUNO {
 		
 		// Preparar los jugadores de la partida
 		// Array de tantos jugadores como haya indicado el usuario
-		JugadorDeUNO[] jugadores = new JugadorDeUNO[numJugadores];
+		JugadorDeUno[] jugadores = new JugadorDeUno[numJugadores];
 		for(int i = 0; i < numJugadores; i++) {
 			// OJO: Previamente no se ha instanciado ning�n jugador
 			// Se instancian aqu�
-			jugadores[i] = new JugadorDeUNO("Jugador " + (i+1), numeroDeCartasInicialEnPilaParaCoger);
+			jugadores[i] = new JugadorDeUno("Jugador " + (i+1), numeroDeCartasInicialEnPilaParaCoger);
 			jugadores[i].cogeCartas(cartasParaCoger, numInicialDeCartasEnMano); 
 			// El jugador coge las cartas iniciales del mazo de carta (cartasParaCoger)
 		}
 		
 		// Secuenciaci�n del juego
 		System.out.println("Juego del UNO");
-		System.out.println("N�mero de jugadores: " + jugadores.length);
+		System.out.println("Número de jugadores: " + jugadores.length);
 		System.out.println("Pila de cartas para coger con " + numeroDeCartasInicialEnPilaParaCoger + " cartas.");
-		System.out.println("N�mero inicial de cartas en mano: " + numInicialDeCartasEnMano + " cartas.\n");
+		System.out.println("Número inicial de cartas en mano: " + numInicialDeCartasEnMano + " cartas.\n");
 		
 		int indiceDeTurno = 0;
-		JugadorDeUNO jugador;
+		JugadorDeUno jugador;
 		do {
 			jugador = jugadores[indiceDeTurno];
 			System.out.println("Turno de: " + jugador.getNombre());
 			jugador.juega(cartasParaCoger, cartasTiradas);  	
 			indiceDeTurno = (indiceDeTurno + 1) % numJugadores; //actualizaci�n �ndice array jugadores!
 		} while(!jugador.sinCartasEnLaMano() && cartasParaCoger.hayCartasDisponibles());
+
 		// Recuerda utilizar los m�todos de cada clase y no repetir c�digo
 		// El juego contin�a mientras el jugador y el mazo sigan teniendo cartas
 		// Si el jugador en turno se queda sin cartas o no quedan cartas en el mazo, se termina
+
 		if(jugador.sinCartasEnLaMano())
 			System.out.println("El ganador es: " + jugador.getNombre());
 		else

@@ -1,9 +1,9 @@
 public class JugadorDeUno {
     private String nombreJugador;
     private ManoDeUno manoDeUnoDeEsteJugador;
-    public JugadorDeUno (String nombreJugador, int numeroCartas) {
+    public JugadorDeUno (String nombreJugador, int numeroCartasInicialParaCoger) {
         this.nombreJugador = nombreJugador;
-        this.manoDeUnoDeEsteJugador = new ManoDeUno(numeroCartas);
+        this.manoDeUnoDeEsteJugador = new ManoDeUno(numeroCartasInicialParaCoger);
     }
 
     public String getNombre () {return nombreJugador;}
@@ -20,16 +20,27 @@ public class JugadorDeUno {
     }
 
     public void juega (PilaDeCartas pilaDeCartas, PilaDeCartas cartasDesechadas) {
-        Carta cartaDePilaTiradas = cartasDesechadas.verCartaParteSuperior();
-        Carta cartaADesechar = manoDeUnoDeEsteJugador.extraerCartaApilableSobre(cartaDePilaTiradas);
+        Carta cartaCimaPilaTiradas = cartasDesechadas.verCartaParteSuperior();
+        System.out.printf("Hay que sacar carta para un %s.\n%s.\n", cartaCimaPilaTiradas.getIdentificador(), manoDeUnoDeEsteJugador.getMano());
+        Carta cartaADesechar = manoDeUnoDeEsteJugador.extraerCartaApilableSobre(cartaCimaPilaTiradas);
         if (cartaADesechar != null) {
+            System.out.println("Tengo carta válida en la mano.");
             cartasDesechadas.agregarCarta(cartaADesechar);
-            System.out.println("Has podido apilar.");
         }
         else {
+            System.out.println("No tengo carta válida en la mano, cojo carta...");
             Carta cartaASumarAMano = pilaDeCartas.extraerCartaParteSuperior();
-            manoDeUnoDeEsteJugador.agregarCarta(cartaASumarAMano);
-            System.out.println("No has podido apilar y ahora tienes una carta más en tu mano.");
+            if (cartaASumarAMano != null) {
+                manoDeUnoDeEsteJugador.agregarCarta(cartaASumarAMano);
+                Carta segundaCartaADesechar = manoDeUnoDeEsteJugador.extraerCartaApilableSobre(cartaCimaPilaTiradas);
+                if (segundaCartaADesechar != null) {
+                    System.out.printf("Ahora sí tengo carta válida en la mano: %s.", cartaASumarAMano.getIdentificador());
+                    cartasDesechadas.agregarCarta(segundaCartaADesechar);
+                }
+                else {
+                    System.out.println("Tampoco puedo jugar tras coger una carta.");
+                }
+            }
         }
     }
 }
