@@ -1,5 +1,4 @@
 public class JugadorDeUno {
-
     private String nombreJugador;
     private ManoDeUno manoDeUnoDeEsteJugador;
     public JugadorDeUno (String nombreJugador, int numeroCartas) {
@@ -20,7 +19,17 @@ public class JugadorDeUno {
         }
     }
 
-    public void juega (PilaDeCartas, PilaDeCartas) {
-
+    public void juega (PilaDeCartas pilaDeCartas, PilaDeCartas cartasDesechadas) {
+        Carta cartaDePilaTiradas = cartasDesechadas.verCartaParteSuperior();
+        Carta cartaADesechar = manoDeUnoDeEsteJugador.extraerCartaApilableSobre(cartaDePilaTiradas);
+        if (cartaADesechar != null) {
+            cartasDesechadas.agregarCarta(cartaADesechar);
+            System.out.println("Has podido apilar.");
+        }
+        else {
+            Carta cartaASumarAMano = pilaDeCartas.extraerCartaParteSuperior();
+            manoDeUnoDeEsteJugador.agregarCarta(cartaASumarAMano);
+            System.out.println("No has podido apilar y ahora tienes una carta más en tu mano.");
+        }
     }
 }

@@ -1,31 +1,47 @@
 public class ManoDeUno {
     private Carta[] cartasEnMano;
 
-    private int numeroCartasEnMano;
-
     public ManoDeUno (int maxCartasEnMano) {
-        numeroCartasEnMano = 0;
         this.cartasEnMano = new Carta[maxCartasEnMano];
     }
 
     public boolean estaVacia () {
-        return numeroCartasEnMano ==  0;
+        for (Carta carta : cartasEnMano) {
+            if (carta != null) {return false;}
+        }
+        return true;
     }
 
     public void agregarCarta(Carta otraCarta) {
-        cartasEnMano[numeroCartasEnMano] = otraCarta;
-        numeroCartasEnMano ++;
+        boolean cartaAgregada = false;
+        for (int i = 0; i < cartasEnMano.length && !cartaAgregada; i++) {
+            if (cartasEnMano[i] == null) {
+                cartasEnMano[i] = otraCarta;
+                cartaAgregada = true;
+            }
+        }
     }
 
-    public Carta extraerCartaApilableSobre (Carta otraCarta) {
-
-
+    public Carta extraerCartaApilableSobre (Carta cartaSobreLaQueHayQueApilar) {
+        for (int i = 0; i < cartasEnMano.length; i++) {
+            if (cartasEnMano[i].equals(cartaSobreLaQueHayQueApilar)) {
+                Carta carta = cartasEnMano[i];
+                cartasEnMano[i] = null;
+                return carta;
+            }
+        }
+        return null;
     }
 
     public String getMano () {
         StringBuilder mano = new StringBuilder("La mano del jugador es: ");
         for (Carta carta : cartasEnMano) {
-            mano.append(String.format(carta.getIdentificador() + ", "));
+            if (carta != null) {
+                mano.append(String.format(carta.getIdentificador() + ", "));
+            }
+        }
+        if (mano.isEmpty()) {
+            return "Sin cartas.";
         }
         return mano.toString();
     }
