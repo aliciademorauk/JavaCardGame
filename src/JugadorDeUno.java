@@ -14,8 +14,10 @@ public class JugadorDeUno {
 
     public void cogeCartas (PilaDeCartas pilaDeCartas, int numeroDeCartasACoger) {
         for (int i = 0; i < numeroDeCartasACoger; i++) {
-            Carta cartaCogida = pilaDeCartas.extraerCartaParteSuperior();
-            manoDeUnoDeEsteJugador.agregarCarta(cartaCogida);
+            if (pilaDeCartas.hayCartasDisponibles()) {
+                Carta cartaCogida = pilaDeCartas.extraerCartaParteSuperior();
+                manoDeUnoDeEsteJugador.agregarCarta(cartaCogida);
+            }
         }
     }
 

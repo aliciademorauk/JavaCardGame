@@ -13,13 +13,9 @@ public class ManoDeUno {
     }
 
     public void agregarCarta(Carta otraCarta) {
-        boolean cartaAgregada = false;
-        for (int i = 0; i < cartasEnMano.length && !cartaAgregada; i++) {
-            if (cartasEnMano[i] == null) {
-                cartasEnMano[i] = otraCarta;
-                cartaAgregada = true;
-            }
-        }
+        int i = 0;
+        while (cartasEnMano[i] != null) i++;
+        cartasEnMano[i] = otraCarta;
     }
 
     public Carta extraerCartaApilableSobre (Carta cartaSobreLaQueHayQueApilar) {
