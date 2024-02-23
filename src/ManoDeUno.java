@@ -32,7 +32,7 @@ public class ManoDeUno {
     }
 
     public String getMano () {
-        StringBuilder mano = new StringBuilder("La mano del jugador es: ");
+        StringBuilder mano = new StringBuilder();
         for (Carta carta : cartasEnMano) {
             if (carta != null) {
                 mano.append(String.format(carta.getIdentificador() + ", "));

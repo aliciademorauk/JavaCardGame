@@ -23,7 +23,7 @@ public class JugadorDeUno {
 
     public void juega (PilaDeCartas pilaDeCartas, PilaDeCartas cartasDesechadas) {
         Carta cartaCimaPilaTiradas = cartasDesechadas.verCartaParteSuperior();
-        System.out.printf("Hay que sacar carta para un %s.\n%s.\n", cartaCimaPilaTiradas.getIdentificador(), manoDeUnoDeEsteJugador.getMano());
+        System.out.printf("Hay que sacar carta para un %s.\nLa mano del jugador es: %s.\n", cartaCimaPilaTiradas.getIdentificador(), manoDeUnoDeEsteJugador.getMano());
         Carta cartaADesechar = manoDeUnoDeEsteJugador.extraerCartaApilableSobre(cartaCimaPilaTiradas);
         if (cartaADesechar != null) {
             System.out.println("Tengo carta válida en la mano.");
