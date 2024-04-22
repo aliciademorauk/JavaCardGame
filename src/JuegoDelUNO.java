@@ -34,7 +34,7 @@ public class JuegoDelUNO {
 		
 		
 		// Preparar la pila de cartas para coger. Tantas barajas completas como se haya pedido.
-		// Solo aqu� se CREAN cartas. En el resto del juego se intercambian
+		// Solo aquí se CREAN cartas. En el resto del juego se intercambian
 		PilaDeCartas cartasParaCoger = new PilaDeCartas(numeroDeCartasInicialEnPilaParaCoger);
 		for(int numB = 0; numB < numBarajas; numB++)
 			for(int valor : VALORES )
